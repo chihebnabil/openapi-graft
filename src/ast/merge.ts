@@ -593,7 +593,7 @@ async function findSourceFiles(dir: string, language: SupportedLanguage): Promis
     rust: 'rs',
   };
 
-  const pattern = path.join(dir, '**', `*.${extensions[language]}`);
+  const pattern = path.posix.join(dir.replace(/\\/g, '/'), '**', `*.${extensions[language]}`);
   return glob(pattern);
 }
 
