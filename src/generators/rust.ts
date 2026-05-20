@@ -443,9 +443,9 @@ function generateRustMethod(operation: OperationObject, method: string, path: st
   const hasParams = operation.parameters && operation.parameters.length > 0;
   const hasRequestBody = operation.requestBody && !('$ref' in operation.requestBody);
 
-  let params: string[] = [];
-  let pathVars: string[] = [];
-  let queryVars: string[] = [];
+  const params: string[] = [];
+  const pathVars: string[] = [];
+  const queryVars: string[] = [];
 
   if (hasParams) {
     for (const param of operation.parameters || []) {

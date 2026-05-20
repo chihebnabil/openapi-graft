@@ -113,7 +113,7 @@ async function generateMCPServerTs(spec: OpenAPISpec, config: MCPConfig, outputD
   const tools = extractMCPTools(spec);
   const resources = extractMCPResources(spec);
   
-  let content = `#!/usr/bin/env node
+  const content = `#!/usr/bin/env node
 
 import { Server } from '@modelcontextprotocol/sdk/server/index.js';
 import { StdioServerTransport } from '@modelcontextprotocol/sdk/server/stdio.js';
@@ -389,7 +389,7 @@ async function generateMCPResources(spec: OpenAPISpec, config: MCPConfig, output
   const srcDir = path.join(outputDir, 'src');
   const resources = extractMCPResources(spec);
 
-  let content = `export interface Resource {
+  const content = `export interface Resource {
   uri: string;
   name: string;
   description: string;
@@ -412,7 +412,7 @@ ${resources.map(r => `  {
 async function generateMCPTypes(spec: OpenAPISpec, config: MCPConfig, outputDir: string): Promise<void> {
   const srcDir = path.join(outputDir, 'src');
 
-  let content = `/**
+  const content = `/**
  * MCP Server Types
  * Auto-generated from ${spec.info.title} OpenAPI spec
  */

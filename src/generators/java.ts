@@ -97,7 +97,7 @@ async function generateJavaClient(spec: OpenAPISpec, config: SDKConfig, srcDir: 
   const securitySchemes = spec.components?.securitySchemes || {};
   const hasAuth = Object.keys(securitySchemes).length > 0;
 
-  let content = `package ${pkgName};
+  const content = `package ${pkgName};
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
@@ -442,8 +442,8 @@ function generateJavaMethod(operation: OperationObject, method: string, path: st
   const hasParams = operation.parameters && operation.parameters.length > 0;
   const hasRequestBody = operation.requestBody && !('$ref' in operation.requestBody);
 
-  let params: string[] = [];
-  let pathFormatVars: string[] = [];
+  const params: string[] = [];
+  const pathFormatVars: string[] = [];
 
   if (hasParams) {
     for (const param of operation.parameters || []) {

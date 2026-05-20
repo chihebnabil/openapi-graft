@@ -421,9 +421,9 @@ function generatePythonMethod(operation: OperationObject, method: string, path: 
   const hasRequestBody = operation.requestBody && !('$ref' in operation.requestBody);
   const hasParams = operation.parameters && operation.parameters.length > 0;
 
-  let params: string[] = [];
-  let pathVars: string[] = [];
-  let queryParams: string[] = [];
+  const params: string[] = [];
+  const pathVars: string[] = [];
+  const queryParams: string[] = [];
   let bodyParam = '';
 
   if (hasParams) {

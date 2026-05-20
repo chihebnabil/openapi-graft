@@ -104,7 +104,7 @@ function convertToASTNode(node: Parser.SyntaxNode): ASTNode {
 function fallbackParse(source: string, language: SupportedLanguage): ASTNode {
   const lines = source.split('\n');
   const blocks: ASTNode[] = [];
-  let currentBlock: { start: number; content: string[] } | null = null;
+  const currentBlock: { start: number; content: string[] } | null = null;
 
   const blockPatterns: Record<SupportedLanguage, RegExp[]> = {
     typescript: [

@@ -411,7 +411,7 @@ function generateMethod(operation: OperationObject, method: string, path: string
   const hasQueryParams = operation.parameters?.some(p => !('$ref' in p) && (p as ParameterObject).in === 'query');
   const hasPathParams = operation.parameters?.some(p => !('$ref' in p) && (p as ParameterObject).in === 'path');
 
-  let params: string[] = [];
+  const params: string[] = [];
   
   if (hasRequestBody || hasQueryParams || hasPathParams) {
     params.push(`request: ${requestType}`);
