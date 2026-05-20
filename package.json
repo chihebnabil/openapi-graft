@@ -26,7 +26,7 @@
     "code-generation",
     "tree-sitter"
   ],
-  "author": "Graft Contributors",
+  "author": "Chiheb Nabil <chiheb.nabil@gmail.com>",
   "license": "MIT",
   "repository": {
     "type": "git",

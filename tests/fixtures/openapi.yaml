@@ -1,0 +1,113 @@
+openapi: 3.0.0
+info:
+  title: Test API
+  version: 1.0.0
+  description: A minimal OpenAPI spec for testing
+
+servers:
+  - url: https://api.example.com/v1
+
+paths:
+  /users:
+    get:
+      operationId: listUsers
+      summary: List all users
+      tags:
+        - users
+      parameters:
+        - name: limit
+          in: query
+          schema:
+            type: integer
+            default: 10
+      responses:
+        '200':
+          description: List of users
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/User'
+    post:
+      operationId: createUser
+      summary: Create a new user
+      tags:
+        - users
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserInput'
+      responses:
+        '201':
+          description: User created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+
+  /users/{id}:
+    get:
+      operationId: getUser
+      summary: Get a user by ID
+      tags:
+        - users
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: User found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+
+components:
+  schemas:
+    User:
+      type: object
+      required:
+        - id
+        - name
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        email:
+          type: string
+          format: email
+        age:
+          type: integer
+        createdAt:
+          type: string
+          format: date-time
+        status:
+          type: string
+          enum:
+            - active
+            - inactive
+            - pending
+    UserInput:
+      type: object
+      required:
+        - name
+      properties:
+        name:
+          type: string
+        email:
+          type: string
+        age:
+          type: integer
+
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT

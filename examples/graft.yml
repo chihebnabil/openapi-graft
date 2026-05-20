@@ -1,4 +1,4 @@
-spec: ./openapi.json
+spec: ./openapi.yaml
 sdks:
   - language: typescript
     output: ./sdks/ts

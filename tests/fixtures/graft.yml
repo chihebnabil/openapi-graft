@@ -1,0 +1,13 @@
+spec: ./openapi.yaml
+sdks:
+  - language: typescript
+    output: ./sdks/ts
+    package: "@test/sdk"
+  - language: python
+    output: ./sdks/python
+    package: "test-sdk"
+mcp:
+  enabled: true
+  output: ./mcp-server
+  name: "test-mcp"
+  version: "1.0.0"
