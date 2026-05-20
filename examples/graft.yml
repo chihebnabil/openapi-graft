@@ -1,0 +1,32 @@
+spec: ./openapi.json
+sdks:
+  - language: typescript
+    output: ./sdks/ts
+    package: "@yourcompany/sdk"
+    preserve:
+      - ./sdks/ts/src/custom/**/*.ts
+  - language: python
+    output: ./sdks/python
+    package: "yourcompany-sdk"
+    preserve:
+      - ./sdks/python/**/custom/**/*.py
+  - language: go
+    output: ./sdks/go
+    package: "github.com/yourcompany/sdk"
+    preserve:
+      - ./sdks/go/**/custom/**/*.go
+  - language: java
+    output: ./sdks/java
+    package: "com.yourcompany.sdk"
+    preserve:
+      - ./sdks/java/**/custom/**/*.java
+  - language: rust
+    output: ./sdks/rust
+    package: "yourcompany-sdk"
+    preserve:
+      - ./sdks/rust/**/custom/**/*.rs
+mcp:
+  enabled: true
+  output: ./mcp-server
+  name: "yourcompany-mcp"
+  version: "1.0.0"
