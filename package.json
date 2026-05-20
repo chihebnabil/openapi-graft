@@ -1,6 +1,6 @@
 {
   "name": "openapi-graft",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "OpenAPI SDK generator with AST-level 3-way merge for preserved custom code, plus MCP server scaffolding",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
