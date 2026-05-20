@@ -28,6 +28,11 @@
   ],
   "author": "Graft Contributors",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chihebnabil/openapi-graft.git"
+  },
+  "homepage": "https://github.com/chihebnabil/openapi-graft#readme",
   "engines": {
     "node": ">=18.0.0"
   },
