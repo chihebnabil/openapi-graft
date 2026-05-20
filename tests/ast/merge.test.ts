@@ -1,4 +1,5 @@
 import * as fs from 'fs-extra';
+import * as os from 'os';
 import * as path from 'path';
 import { performThreeWayMerge } from '../../src/ast/merge';
 import type { MergeResult, SupportedLanguage } from '../../src/types';
@@ -7,7 +8,7 @@ let TEST_DIR: string;
 
 describe('ast/merge - 3-way merge engine', () => {
   beforeEach(async () => {
-    TEST_DIR = path.join(__dirname, '..', 'output', `merge-test-${Date.now()}-${Math.random().toString(36).slice(2)}`);
+    TEST_DIR = path.join(os.tmpdir(), `openapi-graft-merge-test-${Date.now()}-${Math.random().toString(36).slice(2)}`);
     await fs.ensureDir(TEST_DIR);
   });
 
@@ -270,6 +271,7 @@ describe('ast/merge - 3-way merge engine', () => {
 
       const results = await performThreeWayMerge(baseDir, oursDir, theirsDir, 'typescript', outputDir);
 
+      expect(results.length).toBeGreaterThan(0);
       expect(results[0].success).toBe(true);
       expect(results[0].annotationsApplied).toBe(2);
       expect(results[0].output).toContain('methodA');
